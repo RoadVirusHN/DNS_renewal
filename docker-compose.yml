@@ -22,9 +22,9 @@ services:
           context: ./back-sk
           dockerfile: Dockerfile
         ports:
-          - 8000:80
+          - 8000:8000
         environment:
-            SERVER_PORT: ${SERVER_PORT}
+            SERVER_PORT: 8000
             SPRING_DATASOURCE_DRIVER-CLASS-NAME: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
             SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
             SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
@@ -44,7 +44,7 @@ services:
           context: ./front-sk
           dockerfile: Dockerfile
         ports:
-          - 8080:8080
+          - 8080:80
         depends_on: 
           - sns_backend
         networks:

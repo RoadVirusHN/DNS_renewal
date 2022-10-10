@@ -6,8 +6,8 @@ module.exports = {
     devServer: {
       host: '0.0.0.0',
       hot: true,
-      port: '8000',
-      public: "http://localhost:8000/",
+      port: '80',
+      public: "http://localhost:80/",
       disableHostCheck: true
     }
   
