@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.boardhash">
+	<insert id="insert" parameterType="boardhashDto">
+		insert into boardhashs
+		(b_index, h_index)
+		values(
+			#{b_index},
+			#{h_index}
+		)
+	</insert>
+	
+	<select id="selectBoardListPage" parameterType="map" resultType="boardhashDto">select b_index, h_index from boardhashs where h_index = #{h_index} order by b_index desc limit #{page_index}, 4</select>
+	
+	<select id="selectBoardList" parameterType="int" resultType="boardhashDto">
+		select b_index, h_index from boardhashs where h_index = #{h_index}
+	</select>
+	
+	<select id="selectHashtagList" parameterType="int" resultType="boardhashDto">select b_index, h_index from boardhashs where b_index = #{b_index} </select>
+	
+	<select id="selectBoardhash" parameterType="boardhashDto" resultType="boardhashDto">
+		select b_index, h_index from boardhashs where b_index = #{b_index} and h_index = #{h_index}
+	</select>
+	
+	<delete id="deleteBoardhash" parameterType="boardhashDto">
+		delete from boardhashs where h_index = #{h_index} and b_index = #{b_index}
+	</delete>	
+	
+</mapper>

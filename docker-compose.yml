@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+    sns_db:
+        container_name: sns_db
+        build:
+          context: ./db
+          dockerfile: Dockerfile
+        environment:
+          MYSQL_DATABASE: ${MYSQL_DATABASE}
+          MYSQL_ROOT_HOST: '%'
+          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        volumes:
+          - ./db/storage:/var/lib/mysql
+        ports:
+          - 3306:3306
+        networks:
+          - default_network
+
+    sns_backend:
+        build: 
+          context: ./back-sk
+          dockerfile: Dockerfile
+        ports:
+          - 8000:80
+        environment:
+            SERVER_PORT: ${SERVER_PORT}
+            SPRING_DATASOURCE_DRIVER-CLASS-NAME: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+            SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+            SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+            SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+            SPRING_MAIL_HOST: ${SPRING_MAIL_HOST}
+            SPRING_MAIL_PORT: ${SPRING_MAIL_PORT}
+            SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME}
+            SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD}
+
+        depends_on:
+          - sns_db
+        networks:
+          - default_network
+
+    sns_frontend:
+        build: 
+          context: ./front-sk
+          dockerfile: Dockerfile
+        ports:
+          - 8080:8080
+        depends_on: 
+          - sns_backend
+        networks:
+          - default_network
+networks:
+    default_network:

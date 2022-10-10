@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.scrape">
+	<insert id="insert" parameterType="ScrapeDto">
+		insert into scrape
+		(b_index, u_index)
+		values(
+			#{b_index},
+			#{u_index}
+		)
+	</insert>
+	<update id="update" parameterType="ScrapeDto">
+		update scrape set 
+			seen=#{seen}
+		where
+			n_index =#{n_index}
+	</update>
+	
+	<delete id="delete" parameterType="map">
+		delete from scrape
+		where
+		u_index =#{u_index} and b_index = #{b_index}
+	</delete>
+	
+	<select id="selectOne" parameterType="map" resultType="ScrapeDto">
+		select s_index, b_index, u_index
+		from scrape where b_index = #{b_index} and u_index = #{u_index}
+	</select>
+	
+	<select id="selectCount" parameterType="int" resultType="int">
+		select count(*)
+		from scrape
+		where
+			u_index = #{u_index} order by s_index desc
+	</select>
+
+	<select id="selectList" resultType="ScrapeDto">
+		select s_index, b_index, u_index
+		from scrape order by s_index desc
+	</select>
+
+	<select id="selectUser" parameterType="map" resultType="ScrapeDto">
+		select s_index, b_index, u_index
+		from scrape
+		where
+			u_index = #{u_index} order by s_index desc limit #{page_index}, 4
+	</select>
+</mapper>

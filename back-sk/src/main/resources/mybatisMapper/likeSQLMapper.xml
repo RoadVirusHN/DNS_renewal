@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.like">
+	<insert id="insert" parameterType="LikesDto">
+		insert into likes
+		(b_index, like_u_index)
+		values(
+		#{b_index},
+		#{like_u_index}
+		)
+	</insert>
+
+	<delete id="delete" parameterType="LikesDto">
+		delete from likes
+		where
+		b_index=#{b_index} and like_u_index = #{like_u_index}
+	</delete>
+
+	<select id="selectOne" parameterType="int" resultType="int">
+		select
+		count(*)
+		from likes
+		where
+		b_index=#{b_index}	
+	</select>
+	
+	<select id="selectDoILike" parameterType="LikesDto" resultType="int">
+		select
+		count(*)
+		from likes
+		where
+		b_index=#{b_index} and like_u_index=#{like_u_index}	
+	</select>
+</mapper>

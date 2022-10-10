@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.comment">
+	<insert id="insert" parameterType="CommentDto">
+		insert into comments
+		(b_index, u_index, context)
+		values(
+			#{b_index},
+			#{u_index},
+			#{context}
+		)
+	</insert>
+	<update id="update" parameterType="CommentDto">
+		update comments set 
+			context=#{context}
+		where
+			b_index =#{b_index} and u_index=#{u_index}
+	</update>
+
+	<delete id="delete" parameterType="CommentDto">
+		delete from comments
+		where
+		b_index =#{b_index} and u_index=#{u_index}
+	</delete>
+
+	<select id="selectList" parameterType="int" resultType="CommentDto">
+		select b_index, u_index, context, reg_date
+		from comments
+		where
+			b_index = #{b_index}
+	</select>
+	<select id="selectListPage" parameterType="map" resultType="CommentDto">
+		select com_index, b_index, u_index, context, reg_date
+		from comments
+		where
+			b_index = #{b_index} limit #{page_index}, 4
+	</select>
+
+	<select id="selectOne" parameterType="CommentDto" resultType="string">
+		select context
+		from comments
+		where
+			b_index=#{b_index} and u_index = #{u_index}
+	</select>
+	
+	<select id="selectCount" parameterType="int" resultType="int">
+		select count(*)
+		from comments
+		where
+			b_index = #{b_index}
+	</select>
+	
+</mapper>

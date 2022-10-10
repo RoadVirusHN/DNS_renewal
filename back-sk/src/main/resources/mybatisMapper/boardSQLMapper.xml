@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.board">
+	<insert id="insert" parameterType="BoardDto">
+		insert into boards
+		(u_index, context, multi_file)
+		values(
+			#{u_index},
+			#{context},
+			#{multi_file}
+		)
+	</insert>
+	<update id="update" parameterType="BoardDto">
+		update boards set 
+			context=#{context},
+			multi_file=#{multi_file}
+		where
+			b_index =#{b_index}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from boards
+		where
+		b_index =#{b_index}
+	</delete>
+	
+	<select id="selectOne" parameterType="int" resultType="BoardDto">
+		select b_index, u_index, context, file_type, multi_file, reg_date
+		from boards where b_index = #{b_index}
+	</select>
+
+	<select id="selectList" parameterType="int" resultType="BoardDto">
+		select b_index, u_index, context, file_type, multi_file, reg_date
+		from boards order by b_index desc limit #{page_index}, 4
+	</select>
+
+	<select id="selectUser" parameterType="map" resultType="BoardDto">
+		select b_index, u_index, context, file_type, multi_file, reg_date
+		from boards
+		where
+			u_index = #{u_index} order by b_index desc limit #{page_index}, 4
+	</select>
+	
+	<select id="selectOneForIdx" parameterType="map" resultType="int">
+		select b_index from boards
+		where
+			u_index = #{u_index} and context = #{context} and multi_file = #{multi_file} order by b_index desc limit 1
+	</select>
+	
+	<select id="selectUserAll" parameterType="int" resultType="BoardDto">
+		select b_index, u_index, context, file_type, multi_file, reg_date
+		from boards
+		where
+			u_index = #{u_index} order by b_index desc
+	</select>
+	<select id="selectSearchList" parameterType="string" resultType="BoardDto">
+		select b_index, u_index, context, file_type, multi_file, reg_date
+		from boards
+		where
+			context like concat('%',#{keyword},'%') order by b_index desc
+	</select>	
+	<select id="selectSearchListPage" parameterType="map" resultType="BoardDto">
+		select b_index, u_index, context, file_type, multi_file, reg_date
+		from boards		
+		where
+			context like concat('%',#{keyword},'%') order by b_index desc limit #{page_index}, 4
+		
+			
+	</select>
+</mapper>

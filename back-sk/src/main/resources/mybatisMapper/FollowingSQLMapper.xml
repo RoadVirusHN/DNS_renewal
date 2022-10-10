@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.following">
+	<insert id="insert" parameterType="followingDto">
+		insert into followings
+		(u_index, following_u_index, follow_approval)
+		values(
+			#{u_index},
+			#{following_u_index},
+			false
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="followingDto">
+		delete from followings
+		where
+		u_index =#{u_index} and
+		following_u_index=#{following_u_index}
+	</delete>
+
+	<select id="selectList" parameterType="map" resultType="followingDto">
+		select f_index, u_index, following_u_index, follow_approval
+		from followings
+		where 
+			u_index = #{u_index} order by f_index desc limit #{page_index}, 4
+	</select>
+	
+	<select id="selectIsFollowing" parameterType="map" resultType="followingDto">
+		select f_index, u_index, following_u_index, follow_approval
+		from followings
+		where 
+			u_index = #{u_index} and following_u_index = #{following_u_index} limit 1
+	</select>
+	
+	<select id="selectCount" parameterType="int" resultType="int">
+		select count(*)
+		from followings
+		where
+			u_index = #{u_index} order by f_index desc
+	</select>
+	
+</mapper>

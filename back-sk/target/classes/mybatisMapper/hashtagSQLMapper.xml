@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.hashtag">
+	<insert id="insert" parameterType="HashtagDto">
+		insert into hashtags
+		(content)
+		values(
+			#{content}
+		) 
+	</insert>
+	
+	<select id="selectList" resultType="HashtagDto">
+		select h_index, content	from hashtags
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="HashtagDto">
+		select h_index, content	from hashtags where h_index=#{h_index}
+	</select>
+	
+	<select id="selectOneByContent" parameterType="String" resultType="HashtagDto">
+		select h_index, content	from 
+		hashtags 
+		where content=#{content}
+	</select>
+	
+	
+	<select id="selectSearchListPage" parameterType="map" resultType="HashtagDto">select h_index, content from hashtags		
+		where
+			content like concat('%',#{keyword},'%') order by content desc limit #{page_index}, 4</select>
+	
+</mapper>

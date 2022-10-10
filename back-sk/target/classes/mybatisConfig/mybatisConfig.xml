@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.web.curation.dto.UserDto" alias="UserDto" />
+		<!-- <typeAlias type="com.web.curation.dto.FollowersDto" alias="FollowersDto" /> -->
+		<typeAlias type="com.web.curation.dto.FollowerDto" alias="FollowersDto" />
+		<typeAlias type="com.web.curation.dto.BoardDto" alias="BoardDto" />
+		<typeAlias type="com.web.curation.dto.LikesDto" alias = "LikesDto"/>
+		<typeAlias type="com.web.curation.dto.CommentDto" alias = "CommentDto"/>
+		<typeAlias type="com.web.curation.dto.FollowingsDto" alias = "FollowingDto"/>
+		<typeAlias type="com.web.curation.dto.FollowerDto" alias = "FollowerDto"/>
+		<typeAlias type="com.web.curation.dto.HashtagDto" alias= "HashtagDto"/>
+		<typeAlias type="com.web.curation.dto.BoardhashDto" alias= "BoardhashDto"/>
+		<typeAlias type="com.web.curation.dto.ScrapeDto" alias= "ScrapeDto"/>
+		<typeAlias type="com.web.curation.dto.DataDto" alias= "DataDto"/>
+		<typeAlias type="com.web.curation.dto.NoticeDto" alias= "NoticeDto"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mybatisMapper/userSQLMapper.xml" />
+		<!-- <mapper resource="mybatisMapper/followerSQLMapper.xml" /> -->
+		<mapper resource="mybatisMapper/boardSQLMapper.xml" />
+		<mapper resource="mybatisMapper/likeSQLMapper.xml" />
+		<mapper resource="mybatisMapper/commentSQLMapper.xml" />
+		<mapper resource="mybatisMapper/FollowingSQLMapper.xml" />
+		<mapper resource="mybatisMapper/followerSQLMapper.xml" />
+		<mapper resource="mybatisMapper/hashtagSQLMapper.xml"/>
+		<mapper resource="mybatisMapper/boardhashSQLMapper.xml"/>
+		<mapper resource="mybatisMapper/scrapeSQLMapper.xml"/>
+		<mapper resource="mybatisMapper/dataSQLMapper.xml"/>
+		<mapper resource="mybatisMapper/noticeSQLMapper.xml"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.notice">
+	<insert id="insert" parameterType="NoticeDto">
+		insert into notice
+		(u_index, inv_index, b_index, act, seen)
+		values(
+			#{u_index},
+			#{inv_index},
+			#{b_index},
+			#{act},
+			#{seen}
+		)
+	</insert>
+	<update id="update" parameterType="NoticeDto">
+		update notice set 
+			seen=#{seen}
+		where
+			n_index =#{n_index}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from notice
+		where
+		n_index =#{n_index}
+	</delete>
+	
+	<delete id="deleteOne" parameterType="map">
+		delete from notice
+		where
+		u_index =#{following_u_index} and inv_index = #{u_index}
+	</delete>
+	
+	<select id="selectOne" parameterType="int" resultType="NoticeDto">
+		select n_index, u_index, inv_index, act, seen
+		from notice where n_index = #{n_index}
+	</select>
+
+	<select id="selectList" resultType="NoticeDto">
+		select n_index, u_index, inv_index, act, seen
+		from notice order by b_index desc
+	</select>
+	
+	<select id="selectCount" resultType="int">
+		select count(*)
+		from notice
+		where
+			u_index = #{u_index} and seen = false order by n_index desc
+	</select>
+
+	<select id="selectUser" parameterType="int" resultType="NoticeDto">
+		select n_index, u_index, inv_index, b_index, act, seen
+		from notice
+		where
+			u_index = #{u_index} order by n_index desc
+	</select>
+</mapper>

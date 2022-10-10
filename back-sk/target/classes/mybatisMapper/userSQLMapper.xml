@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.user">
+	<insert id="insert" parameterType="UserDto">
+		insert into users
+		(email, pw, nickname, comment, birth, account_public, follow_approval, picture)
+		values(
+			#{email},
+			#{pw},
+			#{nickname},
+			#{comment},
+			#{birth},
+			#{account_public},
+			#{follow_approval},
+			#{picture}
+		)
+	</insert>
+	<update id="update" parameterType="UserDto">
+		update users set 
+			pw=#{pw},
+			nickname=#{nickname},
+			comment=#{comment},
+			birth=#{birth},
+			account_public=#{account_public},
+			follow_approval=#{follow_approval},
+			picture= #{picture}
+		where
+			email =#{email}
+	</update>
+	
+	<update id="updatepw" parameterType="string">
+		update users set 
+			pw=#{pw}
+		where
+			email =#{email}
+	</update>
+
+	<delete id="delete" parameterType="string">
+		delete from users
+		where
+		email =#{email}
+	</delete>
+
+	<select id="selectList" resultType="UserDto">
+		select u_index, email, nickname, comment, birth,account_public, follow_approval, picture
+		from users
+	</select>
+
+	<select id="selectOne" parameterType="string" resultType="UserDto">
+		select u_index, email, nickname, comment, birth, account_public, follow_approval, picture
+		from users
+		where 
+			email = #{email}
+	</select>
+	
+	<select id="selectOnebyu_index" parameterType="int" resultType="UserDto">
+		select u_index, email, nickname, comment, birth, account_public, follow_approval, picture
+		from users
+		where 
+			u_index = #{u_index}
+	</select>
+	
+	<select id="selectLogin" parameterType="UserDto" resultType="UserDto">
+		select u_index, email, pw, nickname, comment, birth, account_public, follow_approval, picture
+		from users
+		where 
+			email = #{email} and pw = #{pw}
+	</select>
+	
+	<select id="emailDuplicateCheck" parameterType="string" resultType="UserDto">
+		select u_index, email, nickname, comment, birth, account_public, follow_approval, picture
+		from users
+		where 
+			email = #{email}
+	</select>
+	
+	<select id="nicknameDuplicateCheck" parameterType="string" resultType="UserDto">
+		select u_index, email, nickname, comment, birth, account_public, follow_approval, picture
+		from users
+		where 
+			nickname = #{nickname}
+	</select>
+	<select id="selectSearchListPage" parameterType="map" resultType="UserDto">
+		select u_index, email, nickname, comment, birth, account_public, follow_approval, picture
+		from users		
+		where
+			nickname like concat('%',#{keyword},'%') order by nickname desc limit #{page_index}, 4
+	</select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="curation.curation">
+	<insert id="insert" parameterType="CurationDto">
+		insert into curation
+		(u_index, set_name, keyword)
+		values(
+			#{u_index},
+			#{set_name},
+			#{keyword}
+		)
+	</insert>
+	<update id="update" parameterType="CurationDto">
+		update curation set 
+			u_index=#{u_index},
+			set_name=#{set_name},
+			keyword=#{keyword}
+		where
+			cu_index =#{cu_index}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from boards
+		where
+		b_index =#{b_index}
+	</delete>
+
+	<select id="selectList" parameterType="int" resultType="CurationDto">
+		select u_index, u_index, context, reg_date
+		from curation
+	</select>
+
+	<select id="selectOne" parameterType="int" resultType="int">
+		select b_index, u_index, context, reg_date
+		from boards
+		where
+			u_index = #{u_index}
+	</select>
+</mapper>
