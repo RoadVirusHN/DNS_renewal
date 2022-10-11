@@ -1,7 +1,7 @@
-FROM node:13
+FROM node:13 as build-stage
 
-# install simple http server for serving static content
-RUN npm install -g http-server
+# # install simple http server for serving static content
+# RUN npm install -g http-server
 
 # make the 'app' folder the current working directory
 WORKDIR /app
@@ -18,5 +18,10 @@ COPY . .
 # build app for production with minification
 RUN npm run build
 
+# EXPOSE 8080
+# CMD [ "http-server", "-p 8080", "dist" ]
+
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
-CMD [ "http-server", "-p 80", "dist" ]
+CMD ["nginx", "-g", "daemon off;"]
