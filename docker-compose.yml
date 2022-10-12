@@ -44,7 +44,7 @@ services:
           context: ./front-sk
           dockerfile: Dockerfile
         ports:
-          - 8080:80
+          - 80:80
         depends_on: 
           - sns_backend
         networks:
