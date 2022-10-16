@@ -7,7 +7,7 @@ module.exports = {
       host: '0.0.0.0',
       hot: true,
       port: '80',
-      public: "http://127.0.0.1:80/",
+      public: "http://54.180.8.164:80/",
       disableHostCheck: true
     }
   
