@@ -6,6 +6,5 @@ docker-compose down
 docker ps -a
 docker container prune -f
 docker image prune --all --force
-docker system prune -f
-docker-compose up
+docker-compose up -d
 echo "deploy done"

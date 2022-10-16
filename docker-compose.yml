@@ -14,6 +14,8 @@ services:
           - ./db/storage:/var/lib/mysql
         ports:
           - 3306:3306
+        networks:
+          - default_network
 
     sns_backend:
         build: 
@@ -34,6 +36,8 @@ services:
 
         depends_on:
           - sns_db
+        networks:
+          - default_network
 
     sns_frontend:
         build: 
@@ -43,3 +47,7 @@ services:
           - 80:80
         depends_on: 
           - sns_backend
+        networks:
+          - default_network
+networks:
+    default_network:
