@@ -1,7 +1,7 @@
 pipeline {
-    agent dns
+    agent {dns}
 
-    stage {
+    stages {
         stage("pull stage") {
             echo "--pull stage start--";
             cd ~/DNS_renewal/;
