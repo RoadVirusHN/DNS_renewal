@@ -17,6 +17,7 @@ pipeline {
         stage("deploy stage") {
             echo "--deploy stage start--"
             docker-compose up -d
+            echo "--deploy done--"
         }
     }
 }
