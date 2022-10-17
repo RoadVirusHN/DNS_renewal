@@ -9,14 +9,14 @@ pipeline {
         }
         stage("delete old stage") {
             echo "--delete old stage start--";
-            docker-compose down;
-            docker ps -a;
-            docker container prune -f;
-            docker image prune --all --force;
+            sh "docker-compose down"
+            sh "docker ps -a"
+            sh "docker container prune -f"
+            sh "docker image prune --all --force"
         }
         stage("deploy stage") {
             echo "--deploy stage start--";
-            docker-compose up -d;
+            sh "docker-compose up -d"
             echo "--deploy done--";
         }
     }
