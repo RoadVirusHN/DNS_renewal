@@ -387,8 +387,8 @@ export default {
                 let commentNum = this.commentNum
                 // let mobileWebUrl= `http://i02c106.p.ssafy.io/FeedDetail/${this.board.b_index}`
                 // let webUrl= `http://6.p.ssafy.io/FeedDetail/${this.board.b_index}`
-                let mobileWebUrl= `http://54.180.8.164:80/FeedDetail/${this.board.b_index}`
-                let webUrl= `http://54.180.8.164:80/FeedDetail/${this.board.b_index}`
+                let mobileWebUrl= `http://54.180.98.152:80/FeedDetail/${this.board.b_index}`
+                let webUrl= `http://54.180.98.152:80/FeedDetail/${this.board.b_index}`
                 let imageUrl =''
                 // this.board.fileLoc.forEach(fileURL => {
                 //   if(fileURL.lastIndexOf('img') != -1){
