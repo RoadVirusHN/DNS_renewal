@@ -26,13 +26,13 @@
 ## 기능(features)
 
 - **로그인-회원가입, 비밀번호 찾기, 변경**
-![image-20221102155927579.png](assets/image-20221102155927579.png)
+<img src="assets/image-20221102155927579.png" width="512px" height="auto">
 - **포스트 등록, 댓글 등록, 코드, 영상, 사진 첨부**
-![image-20221102155824635.png](assets/image-20221102155824635.png)
+<img src="assets/image-20221102155824635.png" width="512px" height="auto">
 - **팔로우, 포스트 스크랩, 알림 기능**
-![image-20221102155755141.png](assets/image-20221102155755141.png)
+<img src="assets/image-20221102155755141.png" width="512px" height="auto">
 - **해쉬 태그, 본문 검색**
-![image-20221102155734607.png](assets/image-20221102155734607.png)
+<img src="assets/image-20221102155734607.png" width="512px" height="auto">
 
 
 ## 팀(Team)
