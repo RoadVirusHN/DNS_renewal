@@ -6,7 +6,7 @@
 
 ## 시연(Showcase)
 
-<a class="badge-anchor"  target="_blank" rel="noopener noreferrer" href="http://ec2-54-180-98-152.ap-northeast-2.compute.amazonaws.com/"><img style="margin: 3px;" class="badge" title="시연용 웹사이트(Showcase website)" src="https://img.shields.io/badge/시연용 웹사이트(Showcase website)-skyblue?style=for-the-badge&logo=googlechrome"></a> <img src="https://badgen.net/github/status/RoadVirusHN/DNS_renewal" >
+<a class="badge-anchor"  target="_blank" rel="noopener noreferrer" href="http://ec2-54-180-98-152.ap-northeast-2.compute.amazonaws.com/"><img style="margin: 3px;" class="badge" title="시연용 웹사이트(Showcase website)" src="https://img.shields.io/badge/시연용 웹사이트(Showcase website)-skyblue?style=for-the-badge&logo=googlechrome"></a> <img src="https://badgen.net/badge/status/pending/orange" >
 
 - 회원 가입 시, 개인 정보 유출이 우려될 경우 다음 아이디를 사용하세요
 	- E-mail: asdf@naver.com
@@ -14,7 +14,7 @@
 
 <a class="badge-anchor" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/presentation/d/1ATPpyd-QxKbGKslnmjN56FQJNkG6qhc7VcyjozlnZ6I/edit?usp=sharing"><img style="margin: 3px;" class="badge" title="발표 자료" src="https://img.shields.io/badge/발표 자료(PPT)-orange?style=for-the-badge&logo=Microsoft PowerPoint"></a>
 
-<a class="badge-anchor"  target="_blank" rel="noopener noreferrer" href="http://ec2-54-180-98-152.ap-northeast-2.compute.amazonaws.com:8000/swagger-ui.html"><img style="margin: 3px;" class="badge" title="SWAGGER API DOC" src="https://img.shields.io/badge/SWAGGER API DOC-darkgreen?style=for-the-badge&logo=swagger"></a><img src="https://badgen.net/github/status/RoadVirusHN/DNS_renewal">
+<a class="badge-anchor"  target="_blank" rel="noopener noreferrer" href="http://ec2-54-180-98-152.ap-northeast-2.compute.amazonaws.com:8000/swagger-ui.html"><img style="margin: 3px;" class="badge" title="SWAGGER API DOC" src="https://img.shields.io/badge/SWAGGER API DOC-darkgreen?style=for-the-badge&logo=swagger"></a><img src="https://badgen.net/badge/status/success/green">
 
 - 서버 비용 관계로 일부 기간 동안에는 작동하지 않습니다.
 
