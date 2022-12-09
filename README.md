@@ -64,8 +64,9 @@
 ### `docker-compose` 배포
 ```bash
 // 슬레이브 노드 서버에서
-cd [user-name]/DNS_renewal
-docker-compose up -d
+cd [user-name]/dkdkt_renewal
+docker build . -t dkdkt/latest
+docker run -p 80:80 -d --name dkdkt dkdkt/latest
 ```
 
 ## License

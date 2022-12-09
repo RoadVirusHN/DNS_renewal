@@ -1,106 +1,109 @@
-DROP DATABASE IF EXISTS sns;
-create database sns;
+-- DROP DATABASE IF EXISTS sns;
+CREATE DATABASE sns If NOT EXISTS sns;
 
-use sns;
+USE sns;
 
 CREATE TABLE users(
-	u_index int auto_increment primary key,
-	email varchar(50),
-    pw varchar(30) not null,
-    nickname varchar(30) not null,
-    comment varchar(200),
-	birth datetime,
-    account_public char(5), # 공개 / 비공개 yes or no check조건 사용
-    follow_approval char(5), # 팔로우 승인 / 비승인 yes or no check조건 사용
-    picture varchar(300)
-)default charset=utf8
-collate=utf8_bin;
+	u_index INT AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(50),
+    pw VARCHAR(30) NOT NULL,
+    nickname VARCHAR(30) NOT NULL,
+    comment VARCHAR(200),
+	birth DATETIME,
+    account_public CHAR(5), -- 공개 / 비공개 yes or no check조건 사용
+    follow_approval CHAR(5), -- 팔로우 승인 / 비승인 yes or no check조건 사용
+    picture VARCHAR(300)
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
+
+-- INSERT INTO users(email, pw, nikname, comment, birth, account_public, follow_approval, picture)
+-- VALUES ();
 
 CREATE TABLE boards(
-	b_index int auto_increment primary key,
-	u_index int not null,
-    context varchar(300) not null, # 게시물 내용
-    file_type varchar(30),
-    multi_file varchar(300),
-	reg_date datetime default now() # 등록 날짜
-)default charset=utf8
-collate=utf8_bin;
+	b_index INT AUTO_INCREMENT PRIMARY KEY,
+	u_index INT NOT NULL,
+    context VARCHAR(300) NOT NULL, # 게시물 내용
+    file_type VARCHAR(30),
+    multi_file VARCHAR(300),
+	reg_date DATETIME DEFAULT NOW() # 등록 날짜
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE comments(
-	com_index int auto_increment primary key,
-	b_index int not null,
-    u_index int not null,
-    depth int,
-    context varchar(300) not null,
-    reg_date datetime default now()
-)default charset=utf8
-collate=utf8_bin;
+	com_index INT AUTO_INCREMENT PRIMARY KEY,
+	b_index INT NOT NULL,
+    u_index INT NOT NULL,
+    depth INT,
+    context VARCHAR(300) NOT NULL,
+    reg_date DATETIME DEFAULT NOW()
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE curation(
-	cu_index int auto_increment primary key,
-	u_index int not null,
-    set_name varchar(30) not null,
-    keyword varchar(100) not null
-)default charset=utf8
-collate=utf8_bin;
+	cu_index INT AUTO_INCREMENT PRIMARY KEY,
+	u_index INT NOT NULL,
+    set_name VARCHAR(30) NOT NULL,
+    KEYword VARCHAR(100) NOT NULL
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE followings(
-	f_index int auto_increment primary key,
-	u_index int not null,
-    following_u_index int not null,
-	follow_approval char(5) not null # 팔로우 승인 / 비승인 yes or no check조건 사용
-)default charset=utf8
-collate=utf8_bin;
+	f_index INT AUTO_INCREMENT PRIMARY KEY,
+	u_index INT NOT NULL,
+    following_u_index INT NOT NULL,
+	follow_approval CHAR(5) NOT NULL -- 팔로우 승인 / 비승인 yes or no check조건 사용
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE followers(
-	f_index int auto_increment primary key,
-	u_index int not null,
-    follower_u_index int not null,
-    follow_approval char(5) not null # 팔로우 승인 / 비승인 yes or no check조건 사용
-)default charset=utf8
-collate=utf8_bin;
+	f_index INT AUTO_INCREMENT PRIMARY KEY,
+	u_index INT NOT NULL,
+    follower_u_index INT NOT NULL,
+    follow_approval CHAR(5) NOT NULL -- 팔로우 승인 / 비승인 yes or no check조건 사용
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE likes(
-	l_index int auto_increment primary key,
-	b_index int,
-    like_u_index int not null
-)default charset=utf8
-collate=utf8_bin;
+	l_index INT AUTO_INCREMENT PRIMARY KEY,
+	b_index INT,
+    like_u_index INT NOT NULL
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
-CREATE TABLE notice(
-	n_index int auto_increment primary key,
-	u_index int,
-    b_index int,
-	inv_index int,
-    act varchar(30),
-    seen char(5) not null
-)default charset=utf8
-collate=utf8_bin;
+CREATE TABLE NOTice(
+	n_index INT AUTO_INCREMENT PRIMARY KEY,
+	u_index INT,
+    b_index INT,
+	inv_index INT,
+    act VARCHAR(30),
+    seen CHAR(5) NOT NULL
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE scrape(
-	s_index int auto_increment primary key,
-	b_index int,
-    u_index int
-)default charset=utf8
-collate=utf8_bin;
+	s_index INT AUTO_INCREMENT PRIMARY KEY,
+	b_index INT,
+    u_index INT
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE hashtags(
 	h_index INT AUTO_INCREMENT PRIMARY KEY,
     content VARCHAR(50) UNIQUE
-)default charset=utf8
-collate=utf8_bin;
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE boardhashs(
 	bh_index INT AUTO_INCREMENT PRIMARY KEY,
     b_index INT NOT NULL,
     h_index INT NOT NULL
-)default charset=utf8
-collate=utf8_bin;
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
 
 CREATE TABLE data_file(
 	d_index INT AUTO_INCREMENT PRIMARY KEY,
-    data_file longblob,
+    data_file LONGBLOB,
     b_index INT NOT NULL,
     idx INT NOT NULL
-)default charset=utf8
-collate=utf8_bin;
+)DEFAULT charset=utf8
+COLLATE=utf8_bin;
