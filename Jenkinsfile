@@ -6,7 +6,6 @@ pipeline {
             steps{                        
                 dir("/home/ec2-user/DNS_renewal/") {
                     echo "--pull stage start--"
-                    sh "pwd"
                     sh "git pull origin main"
                 }
             }

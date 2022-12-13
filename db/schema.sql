@@ -1,6 +1,5 @@
 -- DROP DATABASE IF EXISTS sns;
-CREATE DATABASE sns If NOT EXISTS sns;
-
+CREATE DATABASE IF NOT EXISTS sns;
 USE sns;
 
 CREATE TABLE users(
@@ -15,9 +14,6 @@ CREATE TABLE users(
     picture VARCHAR(300)
 )DEFAULT charset=utf8
 COLLATE=utf8_bin;
-
--- INSERT INTO users(email, pw, nikname, comment, birth, account_public, follow_approval, picture)
--- VALUES ();
 
 CREATE TABLE boards(
 	b_index INT AUTO_INCREMENT PRIMARY KEY,
@@ -43,7 +39,7 @@ CREATE TABLE curation(
 	cu_index INT AUTO_INCREMENT PRIMARY KEY,
 	u_index INT NOT NULL,
     set_name VARCHAR(30) NOT NULL,
-    KEYword VARCHAR(100) NOT NULL
+    keyword VARCHAR(100) NOT NULL
 )DEFAULT charset=utf8
 COLLATE=utf8_bin;
 
@@ -70,7 +66,7 @@ CREATE TABLE likes(
 )DEFAULT charset=utf8
 COLLATE=utf8_bin;
 
-CREATE TABLE NOTice(
+CREATE TABLE notice(
 	n_index INT AUTO_INCREMENT PRIMARY KEY,
 	u_index INT,
     b_index INT,
